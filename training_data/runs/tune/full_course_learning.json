@@ -1,0 +1,18 @@
+{
+  "version": "p2_fast_baseline",
+  "version_hash": "02da8965de99b21d3d44e3a62167b97ccbcc7150b1b693275e1b667d219e1583",
+  "space_version": "full-course-v2",
+  "prompt": "race-reliability-v3",
+  "best_set": [],
+  "candidate": null,
+  "decisions": [
+    {
+      "id": "p2_meta_1793110101847686600",
+      "decision": "not_applied",
+      "reason": "Evidence was assembled before user finish annotation; preserve successful pilot and regenerate evidence before selecting an experiment."
+    }
+  ],
+  "baseline_required": 6,
+  "candidate_attempts": 3,
+  "last_attempt": "20261027_095806_8743_01"
+}

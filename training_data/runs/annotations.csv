@@ -1,0 +1,15 @@
+attempt_id,split,version,course,gates_selfreported,category,gates_confirmed,finished_confirmed,race_clock_end,hits_observed,annotator,notes
+20261026_124224_2212_01,baseline,v0,roadtrip_full,28,no_next_gate,,,,,,
+20261026_124224_2212_02,baseline,v0,roadtrip_full,26,crash_stuck,,,,,,
+20261026_124224_2212_03,baseline,v0,roadtrip_full,28,no_next_gate,,,,,,
+20261026_131411_6218_01,baseline,v1,roadtrip_full,28,no_next_gate,,,,,,
+20261026_131411_6218_02,baseline,v1,roadtrip_full,8,no_next_gate,,,,,,
+20261026_131411_6218_03,baseline,v1,roadtrip_full,28,no_next_gate,,,,,,
+20261026_131411_6218_04,baseline,v1,roadtrip_full,28,no_next_gate,,,,,,
+20261026_131411_6218_05,baseline,v1,roadtrip_full,28,no_next_gate,,,,,,
+20261026_202231_57c7_01,train,x7,roadtrip_full,63,error,,yes,9:29.874,2,"user (in chat, 2026-10-26 ~20:35)","User watched it: 'you managed to beat the game gj despite 2 crashes'. Game Results screen 9:29.874, Personal best (shot logs/shots/20261026_203322.png). Category 'error' = capture stopped on the static Results screen."
+20261026_231710_a6b5_01,train,p2_fast_baseline,roadtrip_full,11,gate_lost,,,,,,
+20261026_233209_3379_01,train,p2_fast_baseline,roadtrip_full,10,no_next_gate,,,,2,"user (chat, 2026-10-26)","User identified second 10-gate run: two collisions, gate 9 roof strike then ground bouncing. Finish status not explicitly labelled."
+20261027_095806_8743_01,train,p2_fast_baseline,roadtrip_full,60,error,,yes,8:27.545,,user confirmation in chat 2026-10-27,User confirmed Results screen finish at 8:27.545. Evidence: logs/shots/batch-error.png. Capture timed out on Results screen; retain raw error. Hits and actual gate count not verified.
+20261027_151641_8ab6_01,train,p2_overflight_no_bounce,roadtrip_full,57,error,,yes,9:13.796,,Codex visual verification 2026-10-27,Results screen saved at eval/roadtrip_attempt3_end.png; also shows prior PB 8:27.545. Raw capture timeout retained. Actual gates and crashes unverified.
+20261027_153702_3a51_01,train,p2_straight_recovery_v2,roadtrip_full,11,crash_stuck,11,no,,1,"user (chat, 2026-10-27)","User watched: hit the top of gate 12 and stopped. Matches monitor hit_then_stopped, damage onset after last pass."

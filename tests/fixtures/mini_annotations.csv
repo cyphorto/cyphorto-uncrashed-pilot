@@ -1,0 +1,4 @@
+attempt_id,split,version,course,gates_selfreported,category,finished_confirmed,race_clock_end,hits_observed,annotator,notes
+mini_01,train,p2_fast_baseline,roadtrip_full,11,gate_lost,,,,,
+mini_02,train,p2_fast_baseline,roadtrip_full,60,error,yes,8:27.545,,user,confirmed finish
+mini_03,train,x7,roadtrip_full,63,error,yes,9:29.874,2,user,confirmed finish with hits

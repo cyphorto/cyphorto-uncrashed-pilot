@@ -1,0 +1,248 @@
+{
+  "arm": "meta",
+  "version": "v3",
+  "course": "roadtrip_g10",
+  "candidates_max": 8,
+  "attempts_per_candidate": 3,
+  "seed": 1,
+  "created": "2026-10-26T17:20:08-0400",
+  "best": 1,
+  "candidates": [
+    {
+      "index": 0,
+      "label": "tune-meta-incumbent",
+      "proposal_id": null,
+      "origin": "starting settings",
+      "set": [],
+      "changes": [],
+      "attempts": [
+        {
+          "attempt_id": "20261026_172008_7994_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 171.5,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_172307_9328_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 165.71,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_172600_ef2c_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 184.36,
+          "crash_ended": false,
+          "damage_icon": false
+        }
+      ],
+      "void": [],
+      "status": "judged",
+      "decision": "incumbent",
+      "why": "starting settings",
+      "void_in_a_row": 0
+    },
+    {
+      "index": 1,
+      "label": "20261026_172912_meta_a487",
+      "proposal_id": "20261026_172912_meta_a487",
+      "origin": "meta-live",
+      "set": [
+        "gate_pilot.forward_pitch=0.32",
+        "gate_pilot.near_pitch=0.24"
+      ],
+      "changes": [
+        {
+          "key": "gate_pilot.forward_pitch",
+          "value": 0.32,
+          "reason": "Centered x near zero with 96 percent gate visibility and zero damage supports slightly higher cruise speed."
+        },
+        {
+          "key": "gate_pilot.near_pitch",
+          "value": 0.24,
+          "reason": "Near-gate dip to about 0.1 is overly conservative given centered alignment and damage-free crossings."
+        }
+      ],
+      "attempts": [
+        {
+          "attempt_id": "20261026_172936_e846_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 161.91,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_173225_029b_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 167.61,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_173520_fd28_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 163.35,
+          "crash_ended": false,
+          "damage_icon": false
+        }
+      ],
+      "void": [],
+      "status": "judged",
+      "decision": "kept",
+      "why": "reached 3/3, median 163.3 s (best 3/3, 171.5 s)",
+      "void_in_a_row": 0
+    },
+    {
+      "index": 2,
+      "label": "20261026_173811_meta_3504",
+      "proposal_id": "20261026_173811_meta_3504",
+      "origin": "meta-live",
+      "set": [
+        "gate_pilot.forward_pitch=0.34",
+        "gate_pilot.near_pitch=0.26"
+      ],
+      "changes": [
+        {
+          "key": "gate_pilot.forward_pitch",
+          "value": 0.34,
+          "reason": "Centered approaches with zero damage indicate margin for higher cruise speed."
+        },
+        {
+          "key": "gate_pilot.near_pitch",
+          "value": 0.26,
+          "reason": "Near-gate crossings remain centered so a small close-in speed increase preserves caution."
+        }
+      ],
+      "attempts": [
+        {
+          "attempt_id": "20261026_173833_ecf1_01",
+          "category": "recover_timeout",
+          "gates": 8,
+          "reached": false,
+          "segment_time_s": null,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_174054_39e1_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 160.54,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_174342_452e_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 161.58,
+          "crash_ended": false,
+          "damage_icon": true
+        }
+      ],
+      "void": [],
+      "status": "judged",
+      "decision": "rejected",
+      "why": "finishes less often: reached 2/3, median 161.1 s (best 3/3, 163.3 s)",
+      "void_in_a_row": 0
+    },
+    {
+      "index": 3,
+      "label": "20261026_174631_meta_e3f7",
+      "proposal_id": "20261026_174631_meta_e3f7",
+      "origin": "meta-live",
+      "set": [
+        "gate_pilot.forward_pitch=0.32",
+        "gate_pilot.near_pitch=0.22",
+        "gate_pilot.alignment_y=0.3",
+        "gate_pilot.max_climb_rate=1.2"
+      ],
+      "changes": [
+        {
+          "key": "gate_pilot.alignment_y",
+          "value": 0.3,
+          "reason": "Fade forward pitch to zero earlier when vertical offset is large to prevent driving into a clip."
+        },
+        {
+          "key": "gate_pilot.near_pitch",
+          "value": 0.22,
+          "reason": "Slow close-in speed to allow vertical correction before contact."
+        },
+        {
+          "key": "gate_pilot.max_climb_rate",
+          "value": 1.2,
+          "reason": "Give more climb authority to close the 1-1.5m height error seen before the clip."
+        }
+      ],
+      "attempts": [
+        {
+          "attempt_id": "20261026_174712_103f_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 168.67,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_175008_faaa_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 162.71,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_175258_f417_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 171.52,
+          "crash_ended": false,
+          "damage_icon": false
+        }
+      ],
+      "void": [],
+      "status": "judged",
+      "decision": "rejected",
+      "why": "not faster: reached 3/3, median 168.7 s (best 3/3, 163.3 s)",
+      "void_in_a_row": 0
+    },
+    {
+      "index": 4,
+      "label": "20261026_175557_meta_a09c",
+      "proposal_id": "20261026_175557_meta_a09c",
+      "origin": "meta-live",
+      "set": [
+        "gate_pilot.forward_pitch=0.32",
+        "gate_pilot.near_pitch=0.24"
+      ],
+      "changes": [],
+      "attempts": [],
+      "void": [],
+      "status": "no_change",
+      "decision": "rejected",
+      "why": "no valid change proposed"
+    }
+  ],
+  "stopped": "the model proposed no valid change; the same evidence would give the same reply",
+  "finished": null,
+  "updated": "2026-10-26T17:56:16-0400"
+}

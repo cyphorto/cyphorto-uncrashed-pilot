@@ -1,0 +1,35 @@
+{
+  "notes": "Learned progress is attempt records plus small JSON state. Paths are relative to the drone-ai-v2 root. Copied from the original project on 2026-10-27; the originals are untouched and are no longer read.",
+  "attempts": {
+    "train": "training_data/runs/train/attempts.jsonl",
+    "valid": "training_data/runs/valid/attempts.jsonl",
+    "baseline": "training_data/runs/baseline/attempts.jsonl"
+  },
+  "tuning_state": {
+    "random": "training_data/runs/tune/random.json",
+    "meta": "training_data/runs/tune/meta.json",
+    "anneal": "training_data/runs/tune/anneal.json",
+    "full_course_learning": "training_data/runs/tune/full_course_learning.json"
+  },
+  "learning": {
+    "feedback": "training_data/meta/learning/feedback.json",
+    "evidence": "training_data/meta/learning/feedback.json"
+  },
+  "human_labels": "training_data/runs/annotations.csv",
+  "ridge_predictor": {
+    "status": "collecting (no fitted weights yet)",
+    "needs_samples": 12,
+    "needs_distinct_settings": 6,
+    "state": "training_data/meta/learning/feedback.json",
+    "state_key": ".model"
+  },
+  "osd_templates": {
+    "alt": "data/alt_templates",
+    "speed": "data/speed_templates"
+  },
+  "frozen_baseline": {
+    "version": "p2_fast_baseline",
+    "tree_sha256": "02da8965de99b21d3d44e3a62167b97ccbcc7150b1b693275e1b667d219e1583",
+    "record": "versions/p2_fast_baseline/version.json"
+  }
+}

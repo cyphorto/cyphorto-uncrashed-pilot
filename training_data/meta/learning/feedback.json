@@ -1,0 +1,45 @@
+{
+  "training_attempts": 4,
+  "baseline_collected": 4,
+  "excluded_attempts": [
+    {
+      "attempt_id": "20261026_233640_fb4e_01",
+      "category": "liftoff_failed",
+      "reason": "invalid or aborted start; retained in raw attempt log"
+    },
+    {
+      "attempt_id": "20261026_233703_4a3a_01",
+      "category": "safety_stale_osd",
+      "reason": "invalid or aborted start; retained in raw attempt log"
+    },
+    {
+      "attempt_id": "20261026_233718_72c0_01",
+      "category": "reset_failed",
+      "reason": "invalid or aborted start; retained in raw attempt log"
+    }
+  ],
+  "baseline_required": 6,
+  "model": {
+    "status": "collecting",
+    "samples": 3,
+    "distinct_settings": 1,
+    "minimum_samples": 12,
+    "minimum_distinct_settings": 6
+  },
+  "privacy": {
+    "clean": true,
+    "images": 0,
+    "type": "allowlisted_numeric_flight_telemetry_v2"
+  },
+  "estimate": {
+    "input_tokens": 10979,
+    "output_tokens_max": 8000,
+    "cost_usd_max": 0.04772
+  },
+  "request_text_chars": 38429,
+  "ledger_spent_usd": 0.236757,
+  "last_attempt": "20261027_095806_8743_01",
+  "last_gates": 60,
+  "candidate": null,
+  "decisions": []
+}

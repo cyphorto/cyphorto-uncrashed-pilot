@@ -1,0 +1,29 @@
+{
+ "attempt": "20261027_144819_052221_gate_live",
+ "rows": 1195,
+ "elapsed_s": 26.6,
+ "gates": 1,
+ "last_pass_t": 21.0,
+ "failure_window_s": 5.7,
+ "next_gate_visible_after_last_pass": "251/251 rows",
+ "last_seen_gate": {
+  "gate_x": "0.078",
+  "gate_y": "0.834",
+  "gate_size": "0.1285"
+ },
+ "last_seen_ago_s": 0.0,
+ "trailing_states": [
+  "pass_candidate",
+  "reacquire",
+  "acquiring",
+  "align",
+  "approach",
+  "aborted"
+ ],
+ "recovery_attempted": false,
+ "recovery_episodes": 0,
+ "end_speed_ms": 2.31,
+ "damage_onsets": 0,
+ "first_damage_s": null,
+ "failure_class_heuristic": "stopped_with_gate_visible"
+}

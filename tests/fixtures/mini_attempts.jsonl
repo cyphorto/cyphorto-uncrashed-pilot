@@ -1,0 +1,3 @@
+{"attempt_id": "mini_01", "version": "p2_fast_baseline", "course": "roadtrip_full", "gates_selfreported": 11, "category": "gate_lost", "crash_ended": false}
+{"attempt_id": "mini_02", "version": "p2_fast_baseline", "course": "roadtrip_full", "gates_selfreported": 60, "category": "error", "crash_ended": false}
+{"attempt_id": "mini_03", "version": "x7", "course": "roadtrip_full", "gates_selfreported": 63, "category": "error", "crash_ended": true}

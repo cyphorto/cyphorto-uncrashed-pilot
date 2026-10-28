@@ -1,0 +1,19 @@
+{
+  "base_url": "https://api.meta.ai/v1",
+  "model": "muse-spark-1.3",
+  "model_source": "https://dev.meta.ai/docs/models, checked 2026-10-26 (standard mode; contributor mode lets Meta train on inputs)",
+  "price_in_per_m": 1.25,
+  "price_out_per_m": 4.25,
+  "price_source": "https://dev.meta.ai/docs/pricing-rate-limits, checked 2026-10-26 (standard mode; cached input $0.15/M)",
+  "image_tokens_estimate": 1500,
+  "max_output_tokens": 8000,
+  "temperature": 0.2,
+  "response_format": null,
+  "budget_usd": 5.0,
+  "stop_at_fraction": 0.8,
+  "max_requests": 40,
+  "timeout_s": 90,
+  "retries": 2,
+  "frames_per_attempt": 6,
+  "credits_confirmed": true
+}

@@ -1,0 +1,93 @@
+# Cyphorto Drone AI V2 — Real-Time Flight Monitoring
+
+The previous Roadtrip validation completed three flights:
+
+- Attempt 1: 25 gates in 226 seconds.
+- Attempt 2: 2 gates in 45 seconds.
+- Attempt 3: 32 gates in 300 seconds.
+
+All three failed after losing the next gate following a crossing. The controller successfully flew and recovered from impacts.
+
+The current testing workflow is inefficient because it waits several minutes before inspecting flight results.
+
+## Objective
+
+Implement automatic, near-real-time flight monitoring and post-flight analysis.
+
+**When I press T to restart the flight in Uncrashed, the system should immediately recognize that the previous attempt has ended, preserve its results, and analyze the failure.**
+
+First verify what T actually does in the current Uncrashed control configuration.
+
+## 1. Monitor each flight
+
+While the drone is flying:
+
+- Monitor available telemetry and logs approximately every 1–2 seconds.
+- Track gate progression and elapsed time.
+- Detect crashes, recoveries, loss of gate tracking, and simulator resets.
+- Avoid unnecessary screenshots or expensive model calls.
+- Use existing telemetry infrastructure wherever possible.
+
+Do not interfere with flight control or keyboard inputs.
+
+## 2. Detect the T key reset
+
+When T is pressed:
+
+1. Detect the restart using the existing input system or observable simulator state.
+2. Preserve the previous attempt's telemetry before it is overwritten.
+3. If possible, capture the last visible simulator state before restarting.
+4. Immediately stop monitoring the previous attempt.
+5. Analyze its saved logs.
+6. Save a concise diagnostic report.
+7. Prepare monitoring for the next attempt.
+
+If T resets the simulator too quickly for a pre-reset screenshot, use continuously collected telemetry or a small rolling buffer instead.
+
+Do not add invasive global keyboard hooks unnecessarily.
+
+## 3. Eliminate unnecessary delays
+
+Remove hardcoded waiting periods that delay analysis after a flight ends.
+
+Use event-based detection or short polling.
+
+Only use longer timeouts when the simulator or controller is genuinely still running.
+
+The goal is to produce a diagnostic report within a few seconds of a detected reset, provided the required data is available.
+
+## 4. Diagnose gate tracking failures
+
+For every failed run, report:
+
+- Total gates completed.
+- Last successfully crossed gate.
+- Time of failure.
+- Whether the next gate was visible.
+- Whether the drone overshot, lost orientation, or misidentified the gate.
+- Whether recovery was attempted.
+- Whether the cause can be determined from actual evidence.
+
+Distinguish confirmed observations from hypotheses.
+
+Pay particular attention to the recurring failure in which the pilot loses the next gate immediately after crossing the previous one.
+
+## 5. Save results automatically
+
+Save each attempt separately in:
+
+`drone-ai-v2/eval/roadtrip/`
+
+Maintain a summary CSV containing attempt number, elapsed time, gates completed, crashes, recoveries, and failure classification.
+
+Preserve existing historical training data.
+
+## 6. Test the monitoring system
+
+Verify that monitoring starts when the pilot launches, detects a manually triggered T reset, preserves the previous attempt, and produces an accurate report.
+
+Test the monitoring workflow without changing the flight algorithm.
+
+Do not start autonomous retraining, make Meta API calls, or modify the original pilot.
+
+**Prioritize making the testing loop fast, reliable, and informative. Once verified, report the exact command needed to start the Roadtrip monitor for future flights.**

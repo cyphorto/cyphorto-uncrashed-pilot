@@ -1,0 +1,69 @@
+# Cyphorto Drone AI V2 — Improve Roadtrip Navigation
+
+The launcher, runner, and live flight monitor now work successfully.
+
+Our latest Roadtrip flight achieved 23 gates in 195 seconds with zero crashes, but failed after losing the next gate.
+
+Previous attempts achieved 25, 2, and 32 gates. The project also has historical successful race completions.
+
+**Your objective is to improve gate navigation and achieve reliable Roadtrip completion.**
+
+## Phase 1 — Analyze existing flight data
+
+Before modifying anything:
+
+1. Inspect the latest four failed Roadtrip flights and identify common failure patterns.
+2. Examine the historical successful flights and identify which controller versions and configurations produced them.
+3. Compare successful and failed gate transitions.
+4. Investigate whether the pilot loses visual contact with gates, selects an incorrect target, overshoots, or turns incorrectly after a crossing.
+5. Determine which failures are supported by actual telemetry and which require additional visual evidence.
+
+Reuse existing logs and recordings before running new flights.
+
+## Phase 2 — Identify improvements
+
+Focus on:
+
+- Detecting the next gate after crossing the current one.
+- Maintaining reliable target tracking during turns.
+- Improving recovery when the next gate becomes temporarily invisible.
+- Preventing unnecessary steering oscillations.
+- Reducing navigation failures without sacrificing existing crash recovery.
+
+Do not optimize maximum speed yet.
+
+Do not assume missing gates are caused by perception without examining the controller's actual target selection and state transitions.
+
+## Phase 3 — Implement and test
+
+Create a preserved baseline before making modifications.
+
+Make one targeted improvement at a time.
+
+Use existing regression tests and recorded telemetry wherever possible.
+
+For each candidate change, compare it against the unchanged baseline under equivalent conditions.
+
+Run at most three new simulator flights without requesting further approval.
+
+Record gates passed, completion status, elapsed time, crashes, and recovery behavior.
+
+Do not modify historical results or discard training progress.
+
+## Phase 4 — Evaluate
+
+Determine whether each change improves reliability compared with the original controller.
+
+Preserve changes only if evidence supports an improvement.
+
+If the data is insufficient, explain what additional measurements are necessary.
+
+Do not use paid Meta Model API calls unless there is a clearly justified benefit.
+
+## Success criteria
+
+The immediate milestone is one verified Roadtrip finish using the updated V2 configuration.
+
+After that, evaluate repeated completion reliability before optimizing speed or attempting Canyon.
+
+**Begin by examining the historical successful runs and comparing their navigation behavior with the latest failures.**

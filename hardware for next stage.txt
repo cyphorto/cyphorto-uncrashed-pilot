@@ -1,0 +1,187 @@
+HARDWARE NEEDED - NEXT STAGE (SIM AI -> REAL 5-INCH DRONE)
+===========================================================
+Goal of this stage: companion computer on the drone sees a real gate,
+sends attitude commands to the H743, and a human can kill it instantly.
+Demo target: one autonomous gate pass, netted/tethered, no payload yet.
+
+Your existing kit (keep, do not replace):
+  - Custom 5-inch frame, 2207 motors, 60A ESC, H743 flight controller
+  - DJI O4 Air Unit Pro + DJI Goggles N3  (human safety pilot's video ONLY)
+  - Your normal transmitter + receiver, flight batteries, charger
+
+Prices below are rough USD street prices (Oct 2026, check before buying).
+Weights are approximate. Confirm fit/weight on YOUR build before ordering.
+
+
+=====================================================================
+TIER 1 - MUST HAVE (nothing flies autonomously without these)
+=====================================================================
+
+[ ] 1. COMPANION COMPUTER - pick ONE path
+
+    RECOMMENDED - NVIDIA Jetson Orin Nano Developer Kit (8GB)
+      ~$249-299 | ~170g with carrier (module alone ~100g class with heatsink)
+      Why: runs Python/OpenCV gate detection with huge headroom, CUDA if
+      you later switch to a learned detector. Best hackathon headroom.
+      Note: dev kit carrier is bulky for a 5-inch. If weight is tight,
+      buy the Orin Nano MODULE + a small third-party carrier board
+      (~$199 module + $50-100 carrier) instead.
+
+    BUDGET - Raspberry Pi 5 (8GB) + active cooler
+      ~$80 board + $5-10 cooler | ~76g with cooler
+      Why: much cheaper/lighter, fine for HSV colour gate detection at
+      640x480-720p. No CUDA. This is enough for the one-gate demo.
+      Needs: fast microSD (A2) or USB3 SSD, Pi 5 power is picky (see BEC).
+
+    My call: Pi 5 8GB if money/weight is tight and demo is 1 gate.
+             Jetson Orin Nano if you want learned detection later and
+             the frame can carry ~150-200g extra.
+
+[ ] 2. CAMERA THE COMPUTER OWNS (the AI's eyes)
+    The DJI O4 CANNOT feed video to the companion. You need one of:
+
+    Pi path:    Raspberry Pi Global Shutter Camera (IMX296, CS-mount)
+                ~$50 + a wide CS lens (120-160 deg FOV) ~$15-25
+                Low motion blur - important on a vibrating 5-inch.
+    Jetson/USB: Arducam USB global-shutter camera (OV9281 class,
+                120+ deg FOV) ~$40-70. Avoid rolling-shutter webcams.
+    Spec checklist: global shutter, >=90 fps at low res if possible,
+    wide FOV (FPV-style, like your sim view), fixed focus, light (<20g
+    bare board preferred). Rigid mount, same tilt as sim camera (~30 deg
+    is what the pilot was tuned around - match it if you can).
+
+[ ] 3. DOWNWARD RANGEFINDER (true height above ground)
+    Benewake TF-Luna (UART or I2C version - get UART)  ~$25-40 | ~5g
+      Range 0.2-8m. This replaces the sim's fake altitude and drives
+      the ground-avoidance logic. ArduPilot supports it directly.
+    Alternative: TF-NOVA (~$30) or a VL53L1X breakout (~$10, only ~4m,
+    sunlight-sensitive). TF-Luna is the safe buy.
+
+[ ] 4. SEPARATE BEC / POWER REGULATOR FOR THE COMPANION
+    5V output, rated 5A CONTINUOUS (Pi 5 and Jetson both brown-out and
+    reboot mid-flight on weak power - this is the #1 bench failure).
+      e.g. Matek/Pololu 5V 5A-class BEC or a quality buck converter ~$10-20
+    Wire: flight battery pad -> BEC -> companion. Common ground with FC.
+    DO NOT power the companion from the flight controller's 5V pad.
+    Add: electrolytic capacitor (low-ESR, e.g. 35V 1000uF) on the BEC
+    input if you get reboots under throttle punches. ~$2.
+
+[ ] 5. CABLES + CONNECTORS (boring, stops projects dead)
+    - 2x silicone servo/UART cable sets, 28-30AWG: FC UART <-> companion
+      UART (TX/RX crossed + GND). ArduPilot MAVLink at 921600 baud.
+      If companion UART is awkward, USB cable FC<->companion also works
+      for bench; UART is the flight config.
+    - JST-GH / Dupont leads to match your exact FC board's UART ports
+      (check the board manual - connector type varies by brand).
+    - XT60 pigtail / spare battery pads wire for the BEC.
+    - Heat shrink, zip ties, double-sided gel tape, threadlocker.
+    Budget: ~$15-25 total. Buy spares, pins pull out at the worst time.
+
+[ ] 6. INDEPENDENT KILL PATH (non-negotiable, may already own)
+    - Your normal RC receiver (ELRS/Crossfire/FrSky) bound to YOUR
+      transmitter, on a channel the companion can NEVER write to.
+    - A physical arm/disarm + mode switch you can hit blind.
+    If your current receiver setup gives the companion any path to arm
+    or override you, fix that before props-on testing. If you need a
+    receiver: ELRS nano receiver ~$13-20 (only if your radio is ELRS).
+
+[ ] 7. SAFETY / TEST GEAR FOR FIRST FLIGHTS
+    - Prop guards OR a netted enclosure / badminton net + poles ~$30-60
+      (a cheap pop-up soccer goal/net works for a 5-inch hover area)
+    - Tether line ( light cord + ground anchor ) for first hovers ~$10
+    - Spare props x10 sets (you will break some) ~$15
+    - Smoke stopper for bench power-ups ~$10
+    - LiPo bag, and your existing charger/batteries
+
+
+=====================================================================
+TIER 2 - STRONGLY RECOMMENDED (makes the demo reliable)
+=====================================================================
+
+[ ] 8. GPS + COMPASS MODULE (position hold, future delivery legs)
+    Matek M10Q-5883 (M10 GPS + QMC5883 compass) ~$35-45 | ~12g
+    or Holybro M10-class equivalent.
+    Not needed for GUIDED_NOGPS attitude demo, REQUIRED for ArduPilot
+    GUIDED position/velocity flight and any delivery leg. Mount away
+    from power wires / on a mast to keep the compass honest.
+    Skip only if the demo is 100% indoors/no-GPS by design.
+
+[ ] 9. THE GATE (make detection easy on purpose)
+    - One FPV race gate (standard ~5ft multiGP-style) OR build one:
+      PVC/pool-noodle frame + BRIGHT orange/red fabric or LED strip.
+    - OR print 2-4 large ArUco/AprilTag markers and mount on the gate
+      corners - detection becomes near-bulletproof for a demo.
+    Budget: $0 (print tags) to ~$60 (real gate). Buy/print BOTH a
+    bright gate and tags; test which your detector nails every time.
+
+[ ] 10. STORAGE + COOLING FOR THE COMPANION
+    Jetson: NVMe SSD 256GB (~$25) - do NOT run the demo off microSD.
+    Pi 5:   A2 microSD 64GB+ (~$12) or USB3 SSD; active cooler fitted.
+    Small 5V fan / heatsink if enclosed. Thermal throttle = frame drops
+    = the AI goes blind mid-run.
+
+[ ] 11. MOUNTING HARDWARE
+    - 3D-printed or foam mount isolating companion + camera from frame
+      vibration (soft gel/foam, not rigid plastic on carbon).
+    - Camera mount at fixed known tilt, lock it - detection tuning
+      assumes the camera does not move between flights.
+    Budget: ~$10-20 if you print; bring spare mounts to the event.
+
+
+=====================================================================
+TIER 3 - AFTER THE GATE WORKS (delivery demo, later phase)
+=====================================================================
+
+[ ] 12. Payload release: 9g-20g servo + printed drop mechanism,
+       dummy payload (foam vial/box, clearly fake) ~$10-20
+[ ] 13. Optical flow sensor (PMW3901 board ~$20-35) - only if you
+       commit to indoor / GPS-denied position hold.
+[ ] 14. Telemetry radio (SiK 915MHz/433MHz pair ~$30-50, check local
+       legality) - ground-station logs/maps for the judges' screen.
+       Optional: the companion's WiFi hotspot can do this instead.
+[ ] 15. Buzzer + GPS-rescue style finder (~$8), spare arms, spare
+       motors x2, spare ESC/FC budget - crashes happen in testing.
+[ ] 16. Extra batteries: plan 6+ packs for a demo day + field charger.
+
+
+=====================================================================
+ROUGH BUDGET SUMMARY
+=====================================================================
+  Minimum viable (Pi 5 path, no GPS):        ~$230-320
+  Recommended (Jetson path + GPS + gate):    ~$450-650
+  (excludes gate/net if you build your own, excludes spares/batteries)
+
+ROUGH ADDED WEIGHT (check against your build's thrust margin!)
+  Pi 5 path:     camera 15g + Pi/cooler 76g + TF-Luna 5g + BEC 10g
+                 + cables/mounts 30g  = ~135g
+  Jetson path:   same but ~170-220g computer = ~230-285g total
+  A 5-inch on 2207s usually lifts this fine, but flight time drops.
+  Weigh EVERYTHING, then hover-test thrust margin before autonomy.
+
+
+=====================================================================
+BEFORE YOU ORDER - CONFIRM THESE (answer changes the list)
+=====================================================================
+  1. Exact flight controller board model / printed target name?
+     ("H743" is the chip, not the board. ArduPilot needs a supported
+     board target, e.g. Matek H743. This decides firmware, section 2.)
+  2. Receiver + radio protocol? (ELRS / Crossfire / FrSky / DJI?)
+     Decides whether item 6 is already satisfied.
+  3. Battery: 4S or 6S? Capacity? Decides BEC input rating and how
+     much companion flight time you can afford.
+  4. Current all-up weight, and hover throttle %? Decides Pi vs Jetson.
+  5. Demo venue: indoors or outdoors? Decides GPS (item 8) vs optical
+     flow (item 13), and net size.
+
+ORDER OF BUYING (if budget is staged):
+  First:  BEC + cables + TF-Luna + camera + Pi/Jetson (bench works,
+          SITL + props-off tests need nothing else)
+  Second: gate/tags + net/tether + spare props (first netted flights)
+  Third:  GPS module (outdoor GUIDED + delivery story)
+  Last:   servo drop, telemetry radio, payload bits (demo polish)
+
+FIRST BENCH TEST ONCE IT ARRIVES (no props, no flying):
+  Battery -> BEC -> companion boots clean under a throttle punch on
+  the bench supply; companion <-> FC UART streams MAVLink both ways;
+  RC kill switch disarms instantly with companion connected and
+  commanding. If any of those fail, nothing else matters yet.

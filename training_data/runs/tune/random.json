@@ -1,0 +1,493 @@
+{
+  "arm": "random",
+  "version": "v3",
+  "course": "roadtrip_g10",
+  "candidates_max": 8,
+  "attempts_per_candidate": 3,
+  "seed": 1,
+  "created": "2026-10-26T14:19:25-0400",
+  "best": 8,
+  "candidates": [
+    {
+      "index": 0,
+      "label": "tune-random-incumbent",
+      "proposal_id": null,
+      "origin": "starting settings",
+      "set": [],
+      "changes": [],
+      "attempts": [
+        {
+          "attempt_id": "20261026_141925_1ae7_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 175.2,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_142228_2f7c_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 172.41,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_142528_cfac_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 169.42,
+          "crash_ended": false,
+          "damage_icon": false
+        }
+      ],
+      "void": [],
+      "status": "judged",
+      "decision": "incumbent",
+      "why": "starting settings",
+      "void_in_a_row": 0
+    },
+    {
+      "index": 1,
+      "label": "20261026_142825_random_1bce",
+      "proposal_id": "20261026_142825_random_1bce",
+      "origin": "random",
+      "set": [
+        "gate_pilot.pursuit_up=1.45"
+      ],
+      "changes": [
+        {
+          "key": "gate_pilot.pursuit_up",
+          "value": 1.45,
+          "reason": "random draw within bounds"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt_id": "20261026_142825_723b_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 170.74,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_143123_36d9_01",
+          "category": "recover_timeout",
+          "gates": 8,
+          "reached": false,
+          "segment_time_s": null,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_143406_16cd_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 171.8,
+          "crash_ended": false,
+          "damage_icon": false
+        }
+      ],
+      "void": [],
+      "status": "judged",
+      "decision": "rejected",
+      "why": "finishes less often: reached 2/3, median 171.3 s (best 3/3, 172.4 s)",
+      "void_in_a_row": 0
+    },
+    {
+      "index": 2,
+      "label": "20261026_143705_random_6cb8",
+      "proposal_id": "20261026_143705_random_6cb8",
+      "origin": "random",
+      "set": [
+        "gate_pilot.near_pitch=0.17",
+        "gate_pilot.lost_s=0.55",
+        "gate_pilot.alignment_y=0.28"
+      ],
+      "changes": [
+        {
+          "key": "gate_pilot.near_pitch",
+          "value": 0.17,
+          "reason": "random draw within bounds"
+        },
+        {
+          "key": "gate_pilot.lost_s",
+          "value": 0.55,
+          "reason": "random draw within bounds"
+        },
+        {
+          "key": "gate_pilot.alignment_y",
+          "value": 0.28,
+          "reason": "random draw within bounds"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt_id": "20261026_143705_a959_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 177.65,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_144010_7a0b_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 180.13,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_144317_278f_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 175.75,
+          "crash_ended": false,
+          "damage_icon": false
+        }
+      ],
+      "void": [],
+      "status": "judged",
+      "decision": "rejected",
+      "why": "not faster: reached 3/3, median 177.7 s (best 3/3, 172.4 s)",
+      "void_in_a_row": 0
+    },
+    {
+      "index": 3,
+      "label": "20261026_144621_random_84d2",
+      "proposal_id": "20261026_144621_random_84d2",
+      "origin": "random",
+      "set": [
+        "gate_pilot.max_yaw=0.16"
+      ],
+      "changes": [
+        {
+          "key": "gate_pilot.max_yaw",
+          "value": 0.16,
+          "reason": "random draw within bounds"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt_id": "20261026_144621_f86c_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 173.77,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_144922_f58e_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 181.99,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_145231_6c68_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 177.35,
+          "crash_ended": false,
+          "damage_icon": false
+        }
+      ],
+      "void": [],
+      "status": "judged",
+      "decision": "rejected",
+      "why": "not faster: reached 3/3, median 177.3 s (best 3/3, 172.4 s)",
+      "void_in_a_row": 0
+    },
+    {
+      "index": 4,
+      "label": "20261026_145536_random_3881",
+      "proposal_id": "20261026_145536_random_3881",
+      "origin": "random",
+      "set": [
+        "gate_pilot.aim_above_frac=0.17",
+        "gate_pilot.pursuit_down=0.9"
+      ],
+      "changes": [
+        {
+          "key": "gate_pilot.aim_above_frac",
+          "value": 0.17,
+          "reason": "random draw within bounds"
+        },
+        {
+          "key": "gate_pilot.pursuit_down",
+          "value": 0.9,
+          "reason": "random draw within bounds"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt_id": "20261026_145536_5124_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 175.17,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_145838_4192_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 175.39,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_150141_8916_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 175.73,
+          "crash_ended": false,
+          "damage_icon": false
+        }
+      ],
+      "void": [],
+      "status": "judged",
+      "decision": "rejected",
+      "why": "not faster: reached 3/3, median 175.4 s (best 3/3, 172.4 s)",
+      "void_in_a_row": 0
+    },
+    {
+      "index": 5,
+      "label": "20261026_150444_random_4996",
+      "proposal_id": "20261026_150444_random_4996",
+      "origin": "random",
+      "set": [
+        "gate_pilot.lost_s=0.95"
+      ],
+      "changes": [
+        {
+          "key": "gate_pilot.lost_s",
+          "value": 0.95,
+          "reason": "random draw within bounds"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt_id": "20261026_150444_7539_01",
+          "category": "no_next_gate",
+          "gates": 8,
+          "reached": false,
+          "segment_time_s": null,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_150735_7913_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 174.73,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_151037_2618_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 179.99,
+          "crash_ended": false,
+          "damage_icon": false
+        }
+      ],
+      "void": [],
+      "status": "judged",
+      "decision": "rejected",
+      "why": "finishes less often: reached 2/3, median 177.4 s (best 3/3, 172.4 s)",
+      "void_in_a_row": 0
+    },
+    {
+      "index": 6,
+      "label": "20261026_151344_random_4fa4",
+      "proposal_id": "20261026_151344_random_4fa4",
+      "origin": "random",
+      "set": [
+        "gate_pilot.acquire_s=0.3",
+        "gate_pilot.alignment_y=0.3"
+      ],
+      "changes": [
+        {
+          "key": "gate_pilot.acquire_s",
+          "value": 0.3,
+          "reason": "random draw within bounds"
+        },
+        {
+          "key": "gate_pilot.alignment_y",
+          "value": 0.3,
+          "reason": "random draw within bounds"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt_id": "20261026_151344_fb3d_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 188.05,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_151700_cef2_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 182.03,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_152009_a1ea_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 176.55,
+          "crash_ended": false,
+          "damage_icon": false
+        }
+      ],
+      "void": [],
+      "status": "judged",
+      "decision": "rejected",
+      "why": "not faster: reached 3/3, median 182.0 s (best 3/3, 172.4 s)",
+      "void_in_a_row": 0
+    },
+    {
+      "index": 7,
+      "label": "20261026_152313_random_1cee",
+      "proposal_id": "20261026_152313_random_1cee",
+      "origin": "random",
+      "set": [
+        "gate_pilot.pursuit_up=1.5"
+      ],
+      "changes": [
+        {
+          "key": "gate_pilot.pursuit_up",
+          "value": 1.5,
+          "reason": "random draw within bounds"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt_id": "20261026_152313_9d82_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 174.12,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_152614_b515_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 176.29,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_152918_2058_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 172.82,
+          "crash_ended": false,
+          "damage_icon": false
+        }
+      ],
+      "void": [],
+      "status": "judged",
+      "decision": "rejected",
+      "why": "not faster: reached 3/3, median 174.1 s (best 3/3, 172.4 s)",
+      "void_in_a_row": 0
+    },
+    {
+      "index": 8,
+      "label": "20261026_153218_random_727e",
+      "proposal_id": "20261026_153218_random_727e",
+      "origin": "random",
+      "set": [
+        "gate_pilot.max_climb_rate=1.3",
+        "gate_pilot.forward_pitch=0.39",
+        "gate_pilot.aim_above_frac=0.06"
+      ],
+      "changes": [
+        {
+          "key": "gate_pilot.max_climb_rate",
+          "value": 1.3,
+          "reason": "random draw within bounds"
+        },
+        {
+          "key": "gate_pilot.forward_pitch",
+          "value": 0.39,
+          "reason": "random draw within bounds"
+        },
+        {
+          "key": "gate_pilot.aim_above_frac",
+          "value": 0.06,
+          "reason": "random draw within bounds"
+        }
+      ],
+      "attempts": [
+        {
+          "attempt_id": "20261026_153218_93b9_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 141.92,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_153448_59af_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 153.44,
+          "crash_ended": false,
+          "damage_icon": false
+        },
+        {
+          "attempt_id": "20261026_153729_52b4_01",
+          "category": "target_reached",
+          "gates": 10,
+          "reached": true,
+          "segment_time_s": 147.03,
+          "crash_ended": false,
+          "damage_icon": true
+        }
+      ],
+      "void": [],
+      "status": "judged",
+      "decision": "kept",
+      "why": "reached 3/3, median 147.0 s (best 3/3, 172.4 s)",
+      "void_in_a_row": 0
+    }
+  ],
+  "stopped": null,
+  "finished": "2026-10-26T15:40:03-0400",
+  "updated": "2026-10-26T15:40:03-0400"
+}

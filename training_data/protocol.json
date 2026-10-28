@@ -1,0 +1,42 @@
+{
+  "protocol_version": 1,
+  "heldout_unlocked": false,
+  "courses": {
+    "roadtrip_g10": {
+      "role": "dev",
+      "game_menu": "Single player > Race > Uncrashed > Roadtrip 'Follow the road' (2nd row) > Free race",
+      "gates_target": 10,
+      "duration_s": 420,
+      "notes": "First 10 gates of Roadtrip. The pilot stops itself after its 10th self-reported pass (gate_pilot.max_gates=10). ~3.2 min of flight at baseline (gate 10 at 189 s in logs/20261025_130028)."
+    },
+    "roadtrip_full": {
+      "role": "dev",
+      "game_menu": "Single player > Race > Uncrashed > Roadtrip 'Follow the road' (2nd row) > Free race",
+      "gates_course": 28,
+      "duration_s": 900,
+      "notes": "Whole race. 28 is config race.gates and is NOT the end of the course. Checked 2026-10-26 from view frames: in the pre-event 'finish' (logs/20261025_130028, ~510-516 s) and in v0 baseline attempts 20261026_124224_2212_01 and _03, the pilot's 28th self-counted pass is followed by a gate at a left bend, with a magenta (later) gate still on the course to the left. The pilot crosses that gate, flies straight on into the field, and stops with 'no next gate after crossing' while the race clock keeps running. With that fixed (v2, 2026-10-26) two attempts reached 31 and 32 self-counted passes and still saw later (magenta) gates ahead, clock running at 9:22. Validation attempt 20261026_154118_5905_04 (v3 + random-arm candidate 8) reached 53 self-counted passes and was still flying when duration_s 900 ended it: race clock 15:13 and running, Laps 1/1, many magenta gates still ahead (view/922.64). Real gate count unknown, well over 53; at that speed 900 s is not enough to finish. First finish 2026-10-26 (see finish_definition): the x5/x7 speed settings, 63 self-counted gates in 9:29.874 race time.",
+      "finish_definition": "The game shows a Results screen: 'Results <race time>', the pilot's name and time, 'Personal best', Gold 1:00 / Silver 1:10 / Bronze 1:20, 'PRESS RESET TO RETRY', Restart / Free flight buttons. The screen is static, so the window capture stops delivering frames (runner: 'no frame from the game window'). First finish 2026-10-26 ~20:32: x7 speed-experiment flight 20261026_202231_57c7_01 (training), 63 self-counted gates, race time 9:29.874, confirmed by the user watching ('you managed to beat the game ... despite 2 crashes'); screenshot hackathon/runs/evidence/first_finish_results_9-29-874.png",
+      "gates_course_selfcounted_at_finish": 63
+    },
+    "canyon_g10": {
+      "role": "heldout",
+      "game_menu": "Single player > Race > Uncrashed > Roadtrip 'The Canyon' (row 10) > Free race",
+      "gates_target": 10,
+      "duration_s": 420,
+      "notes": "Reserved held-out course: same map and gate style, different route. Never flown, viewed or analysed during development. Gate count of the course not yet known; confirm it has at least 10 gates before unlocking."
+    }
+  },
+  "settings": {
+    "game": "Uncrashed: FPV Drone Simulator (Steam app 1682970)",
+    "game_build": "UNRECORDED: note the version shown in the game's menu before the baseline",
+    "display": "borderless 1920x1080 (window capture crops the client area if it comes back windowed)",
+    "camera_tilt_deg": 10,
+    "flight_mode": "ANGLE (A button press on the virtual controller)",
+    "controller": "virtual Xbox 360 pad (vgamepad/ViGEmBus); DJI remote unplugged",
+    "camera_fov": "UNRECORDED: game default assumed (pilot uses vfov 86.2 deg from horizontal FOV 118)",
+    "graphics_preset": "UNRECORDED: record the in-game graphics settings before the baseline",
+    "drone_preset": "UNRECORDED: record the drone/rates preset before the baseline",
+    "start": "T (RestartRace) puts the drone on the start pad; runner checks ALT within 0.3 m of 0 and mode ANGLE before takeoff",
+    "osd_elements": "Time, Laps, mode, km/h, ALT, battery visible (the pilot reads ALT, km/h, mode, damage icon)"
+  }
+}

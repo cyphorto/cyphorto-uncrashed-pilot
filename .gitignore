@@ -1,0 +1,16 @@
+# Local environments and tool state
+.venv/
+__pycache__/
+*.pyc
+.muse/
+.agents/
+.eden/
+.hg/
+.sl/
+
+# Flight logs and generated run output (kept locally, not in git)
+logs/
+versions/*/logs/
+versions/*/results/
+versions/*/jobs/
+data/recordings/

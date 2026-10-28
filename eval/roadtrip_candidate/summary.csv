@@ -1,0 +1,4 @@
+attempt,log,elapsed_s,gates,damage_onsets,recovery_episodes,failure_class,ended
+20261027_135147_957433_gate_live,20261027_135147_957433_gate_live,104.1,11,1,7,gate_lost_moving,flight_ended
+20261027_135553_297958_gate_live,20261027_135553_297958_gate_live,279.3,30,0,8,no_next_gate_after_crossing,flight_ended
+20261027_140215_470630_gate_live,20261027_140215_470630_gate_live,500.4,57,4,21,no_next_gate_after_crossing,flight_ended

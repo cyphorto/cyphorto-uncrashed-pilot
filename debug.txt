@@ -1,0 +1,118 @@
+# Cyphorto Drone AI V2 — Autonomous Runner Debugging
+
+Your task is to get the Roadtrip flight controller and V2 monitoring system working together reliably.
+
+The latest launcher attempt failed with:
+
+`ABORT: runner never beat (exited: False)`
+
+The monitor started successfully, but the controller heartbeat was never detected and no race began.
+
+## Objective
+
+Diagnose, repair, and validate the entire runner startup and monitoring process with minimal user intervention.
+
+You have permission to fix broken code, configuration, process management, logging, and launcher integration.
+
+Do not modify the flight control algorithms, reset training, delete checkpoints, or alter historical race data.
+
+## Phase 1 — Investigate
+
+Inspect the existing implementation before changing anything.
+
+1. Read `start_roadtrip.ps1`.
+2. Inspect the `p2_fast_baseline` runner startup code.
+3. Identify where and how the runner heartbeat is generated.
+4. Determine why the launcher reported `runner never beat`.
+5. Check Python exceptions, process state, virtual controller initialization, working directories, and relevant logs.
+6. Determine whether an orphaned runner or monitor was left behind.
+
+Find the root cause rather than simply increasing timeouts.
+
+## Phase 2 — Repair
+
+Fix confirmed problems, including where applicable:
+
+- Runner startup failures.
+- Missing or incorrectly located heartbeat files.
+- Incorrect process detection.
+- Virtual controller initialization problems.
+- Launcher and runner configuration mismatches.
+- Errors caused by working directories or relative paths.
+- Incorrect shutdown or cleanup behavior.
+
+Preserve working flight behavior.
+
+Do not kill unrelated processes or modify simulator controls without evidence that they are causing the failure.
+
+## Phase 3 — Continuous runner supervision
+
+Add lightweight monitoring to the existing launcher rather than building another large framework.
+
+Monitor:
+
+- Runner process status.
+- Heartbeat freshness.
+- Unexpected Python exceptions.
+- Whether the virtual controller initializes successfully.
+- Whether the runner remains responsive during a flight.
+- Whether telemetry and flight logs continue updating.
+
+Distinguish between a healthy idle runner, an active flight, and an unresponsive or crashed process.
+
+If a problem is detected, save diagnostic information immediately.
+
+Do not restart the runner automatically during an active flight, because doing so could interfere with the simulator.
+
+## Phase 4 — Test the repairs
+
+First perform offline tests and a dry run.
+
+Then, provided Uncrashed is already open on Roadtrip and the necessary simulator controls are available, perform one supervised flight.
+
+Verify that:
+
+1. The launcher starts the monitor.
+2. The runner initializes successfully.
+3. The heartbeat is detected.
+4. The controller takes control of the drone.
+5. One race attempt executes.
+6. Flight results are saved automatically.
+7. Processes shut down cleanly.
+
+If user interaction is required, request only the specific action needed.
+
+Do not launch another Uncrashed instance.
+
+## Phase 5 — Iterate safely
+
+If the supervised launch fails:
+
+- Inspect the actual error.
+- Make the smallest necessary correction.
+- Run focused tests.
+- Retry startup verification.
+
+You may repeat offline diagnostic tests as needed.
+
+Limit actual simulator flight attempts to three.
+
+Do not run an indefinite debugging loop, continuously restart processes, or create unnecessary new systems.
+
+If blocked, report the precise blocker rather than claiming success.
+
+## Final report
+
+When finished, provide:
+
+- Root cause of the original heartbeat failure.
+- Files changed and why.
+- Tests executed and their results.
+- Runner and monitor status.
+- Actual flight results, if tested.
+- Any remaining problems.
+- The exact one-command launcher invocation.
+
+**Success means the launcher, monitor, and runner reliably operate together and a real Uncrashed flight has been verified. Passing unit tests alone is not sufficient.**
+
+Begin by investigating the existing runner heartbeat failure. Fix the underlying cause before making architectural changes.

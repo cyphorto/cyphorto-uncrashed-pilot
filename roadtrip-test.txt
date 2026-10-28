@@ -1,0 +1,57 @@
+# Cyphorto Drone AI — Complete V2 Migration
+
+Your task is to make `drone-ai-v2` the main, self-contained drone project.
+
+Currently, V2 depends on code in the original `flying drone` folder. I want to eliminate those code dependencies while preserving everything that works.
+
+## Instructions
+
+1. Identify the code actually used by the working flight controller, training system, simulator integration, and monitoring tools.
+2. Copy the necessary code and dependencies into `drone-ai-v2`.
+3. Preserve the existing flight algorithms, including the experimental `p2_overflight_recovery` version.
+4. Keep existing training history, checkpoints, configurations, and results accessible.
+5. Move or adapt the Roadtrip launcher so it runs entirely from V2.
+6. Update Python imports and paths to reference V2 instead of the original project.
+7. Remove redundant code from V2 only after verifying it is unnecessary.
+8. Update `AGENTS.md` and `README.md` with simple instructions for running and training the drone.
+
+## Important rules
+
+- **Do not modify or delete the original project.**
+- Do not rewrite the flight algorithms.
+- Do not reset training.
+- Do not create another V3 folder.
+- Do not launch Uncrashed or run simulator flights.
+- Do not create large multi-agent workflows.
+- Do not make paid Meta API calls from the drone application.
+- Avoid copying historical logs, recordings, or unnecessary experiments.
+- Work efficiently and minimize token usage.
+
+## Validation
+
+Run automated tests to confirm that V2 works.
+
+Most importantly, prove that V2 no longer depends on executable code from the original project's `hackathon` directory.
+
+Test this by temporarily making the original code unavailable to V2, without moving, renaming, or modifying the original files.
+
+Ensure V2 can import its modules, start its flight controller in a safe offline test, load the existing training state, and run its monitoring tools.
+
+Do not claim a successful simulator flight without actually performing one.
+
+## Final result
+
+I want one clean project:
+
+`C:\Users\VYRAL\Desktop\flying drone\drone-ai-v2`
+
+It should contain everything necessary to continue developing, training, monitoring, and testing my autonomous drone pilot.
+
+When finished, provide:
+
+1. A summary of what was migrated.
+2. Confirmation of which tests passed.
+3. Any remaining external dependencies.
+4. The exact commands to launch and train the drone from V2.
+
+**Keep this migration as simple as possible. Reuse working code, avoid architectural redesign, and preserve all existing progress.**

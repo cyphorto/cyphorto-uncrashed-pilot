@@ -1,0 +1,27 @@
+{
+  "map_id": "roadtrip",
+  "game": "Uncrashed: FPV Drone Simulator (Steam app 1682970)",
+  "courses": {
+    "roadtrip_g10": {
+      "game_menu": "Single player > Race > Uncrashed > Roadtrip 'Follow the road' (2nd row) > Free race",
+      "gates_target": 10,
+      "duration_s": 420,
+      "max_gates": 10
+    },
+    "roadtrip_full": {
+      "game_menu": "Single player > Race > Uncrashed > Roadtrip 'Follow the road' (2nd row) > Free race",
+      "gates_target": null,
+      "duration_s": 900,
+      "max_gates": 99,
+      "notes": "Finish is the game Results screen plus a human label. Gate count alone is not a finish."
+    }
+  },
+  "camera_tilt_deg": 30,
+  "flight_mode": "ANGLE",
+  "vfov_deg_assumed": 86.2,
+  "vfov_note": "Assumes horizontal FOV 118 at 16:9. Game FOV is UNRECORDED; verify before trusting on a new map.",
+  "perception_note": "Green H55-72 / magenta H150-172 HSV ranges were tuned on Roadtrip footage. Re-verify on any new map.",
+  "baseline_version": "p2_fast_baseline",
+  "baseline_tree_sha256": "02da8965de99b21d3d44e3a62167b97ccbcc7150b1b693275e1b667d219e1583",
+  "status": "active"
+}

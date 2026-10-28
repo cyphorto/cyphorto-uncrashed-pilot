@@ -1,0 +1,26 @@
+{
+  "map_id": "canyon",
+  "game": "Uncrashed: FPV Drone Simulator (Steam app 1682970)",
+  "courses": {
+    "canyon_g10": {
+      "game_menu": "Single player > Race > Uncrashed > Roadtrip 'The Canyon' (row 10) > Free race",
+      "gates_target": 10,
+      "duration_s": 420,
+      "max_gates": 10
+    }
+  },
+  "camera_tilt_deg": 30,
+  "flight_mode": "ANGLE",
+  "vfov_deg_assumed": 86.2,
+  "perception_note": "HSV ranges are Roadtrip-tuned and UNVERIFIED on Canyon. Capture stills first; do not fly blind.",
+  "baseline_version": null,
+  "baseline_tree_sha256": null,
+  "status": "locked",
+  "unlock_checklist": [
+    "Confirm the course has at least 10 gates",
+    "Set protocol heldout_unlocked true only after the check above",
+    "Verify camera tilt reads 30 degrees in-race",
+    "Verify green/magenta HSV detection on Canyon stills",
+    "Record game build, graphics preset and drone preset"
+  ]
+}

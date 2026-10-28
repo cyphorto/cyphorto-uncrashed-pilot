@@ -1,0 +1,212 @@
+# Cyphorto Drone AI V2 — Fix Overflight and Ground Bouncing
+
+You are working on my autonomous Uncrashed drone pilot in `drone-ai-v2`.
+
+The flight controller, launcher, and real-time monitoring system are now operational. Your task is to improve the drone's actual flight performance.
+
+**Your two priorities are:**
+
+1. Eliminate or substantially reduce overflight failures where the drone passes above a racing gate, loses sight of it, and eventually times out.
+2. Fix ground-bouncing behavior where the drone repeatedly hits or bounces along the ground instead of maintaining controlled flight or recovering.
+
+The ultimate goal is reliable completion of the Roadtrip racecourse, followed by generalization to other maps.
+
+## Current project state
+
+- The working controller is `p2_fast_baseline`.
+- The V2 launcher is `start_roadtrip.ps1`.
+- The live monitor already records flight telemetry and reset events.
+- Historical flights include a successful 63-gate completion.
+- Recent baseline attempts reached 25, 2, 32, and 23 gates without finishing.
+- The experimental `p2_side_glimpse` candidate reached 57 gates but did not demonstrate that its proposed fix actually activated.
+- The dominant observed failure is overflight. The target gate moves below the camera frame, and the pilot continues flying forward without reacquiring it.
+- The previous lateral-glimpse fix addressed a less common failure mode and remains unproven.
+
+Preserve existing successful behavior and training history.
+
+## Phase 1 — Diagnose both problems
+
+Before editing algorithms, inspect the relevant source files, flight telemetry, screenshots, and recorded attempts.
+
+### Problem A — Overflight
+
+Determine why the drone passes above gates instead of through them.
+
+Investigate:
+
+- Gate alignment and vertical position in the camera frame.
+- Camera tilt and its relationship to actual flight direction.
+- Pitch, throttle, speed, and altitude near gate crossings.
+- Whether the drone begins descending too late.
+- Whether the pilot incorrectly predicts a successful crossing.
+- Whether gate-target selection changes prematurely.
+- Why the drone continues forward after losing the target.
+- Whether the existing crossing timeout prevents recovery.
+
+Examine the last several seconds before each documented overflight.
+
+Distinguish confirmed causes from hypotheses.
+
+### Problem B — Ground bouncing
+
+Investigate why the drone sometimes repeatedly collides with or bounces along the ground.
+
+Determine whether the primary cause is:
+
+- Excessive downward velocity.
+- Incorrect throttle or pitch commands.
+- Poor altitude estimation.
+- Delayed collision detection.
+- An unstable recovery controller.
+- Control oscillations after ground contact.
+- Attempts to continue forward while insufficiently airborne.
+
+Inspect relevant damage events, flight states, controller outputs, and simulator telemetry.
+
+Do not assume that a successful impact recovery means the underlying behavior is acceptable.
+
+## Phase 2 — Improve altitude and gate alignment
+
+Implement targeted changes supported by the evidence.
+
+Potential improvements include:
+
+1. Predictive vertical alignment before reaching a gate.
+2. Speed-dependent pitch and throttle adjustment.
+3. Better altitude control during gate approaches.
+4. Detection when the target gate moves beneath the camera frame.
+5. Controlled target reacquisition after an overflight.
+6. Better handling of uncertain gate crossings.
+
+Avoid relying on fixed Roadtrip coordinates.
+
+The controller should use visual observations and available flight state whenever possible.
+
+Do not blindly increase or decrease throttle. Respect the existing control conventions and verify the effects in simulation.
+
+## Phase 3 — Improve ground-contact recovery
+
+Develop or refine recovery behavior so the drone can stabilize after a ground collision.
+
+When ground contact is detected:
+
+1. Determine whether the drone is still controllable.
+2. Prevent unnecessary repeated impact cycles.
+3. Reduce destabilizing control commands.
+4. Recover sufficient altitude when physically feasible.
+5. Reestablish stable attitude and movement.
+6. Resume gate navigation once conditions are suitable.
+
+Include hysteresis or other stabilization measures if supported by the observed failure.
+
+Avoid rapid switching between normal flight and recovery modes.
+
+Do not endlessly attempt recovery when the drone is irrecoverably stuck. Preserve a bounded, diagnosable failure state.
+
+## Phase 4 — Implement carefully
+
+Create a new experimental controller version, such as:
+
+`p2_overflight_recovery`
+
+Keep `p2_fast_baseline` untouched.
+
+Prefer minimal changes to existing flight logic rather than rewriting the pilot.
+
+Add focused regression tests for:
+
+- Gate disappearing below the camera frame.
+- Incorrect crossing detection.
+- Overflight timeout and reacquisition.
+- Ground-contact detection.
+- Repeated bouncing.
+- Stable transition from recovery back to navigation.
+
+Use historical telemetry and recorded images for offline testing wherever possible.
+
+Do not build another launcher, monitoring framework, or unnecessary infrastructure.
+
+## Phase 5 — Real simulator testing
+
+Use the existing Uncrashed session on Roadtrip.
+
+Run the experimental controller with the working launcher and monitor, adapting only the configuration necessary to select the candidate.
+
+Perform a maximum of three supervised simulator attempts initially.
+
+For each attempt, record:
+
+- Gates passed.
+- Successful race completion.
+- Total flight duration.
+- Overflight events.
+- Ground impacts and bouncing episodes.
+- Successful recoveries.
+- Gate reacquisition attempts and outcomes.
+- Final failure reason.
+
+Review each attempt's telemetry immediately after completion.
+
+If a flight fails, identify the cause before modifying parameters.
+
+Do not repeat identical unsuccessful attempts indefinitely.
+
+## Phase 6 — Compare with the baseline
+
+Compare the candidate against the unchanged baseline using consistent configurations and comparable conditions.
+
+Remember that the baseline has already shown significant run-to-run variance. A single high gate count does not prove improvement.
+
+Evaluate whether:
+
+- Overflight frequency decreases.
+- Ground bouncing decreases.
+- Gate reacquisition succeeds more frequently.
+- Race completion becomes more consistent.
+- Previously working recovery behavior is preserved.
+
+Do not promote the candidate unless the evidence supports it.
+
+If the results are inconclusive, preserve the experiment and report that further testing is necessary.
+
+## Phase 7 — Prepare for other maps
+
+Ensure any improvements are based on general flight behavior rather than special-case Roadtrip instructions.
+
+Avoid hardcoded gate numbers, predetermined routes, or memorized coordinates.
+
+Once Roadtrip completion improves, prepare a separate validation strategy for Canyon.
+
+Do not automatically start Canyon training during this task.
+
+## Operating constraints
+
+- Preserve all existing training data.
+- Do not overwrite historical checkpoints.
+- Do not modify the original successful pilot.
+- Do not launch a second Uncrashed instance.
+- Use existing monitoring and launch infrastructure.
+- Do not make paid Meta Model API calls.
+- Do not modify unrelated code.
+- Do not introduce unnecessary dependencies.
+- Do not confuse a longer flight with a proven algorithmic improvement.
+- Keep a clear record of every algorithm change.
+- Run automated tests before simulator flights.
+
+You may autonomously inspect files, fix code, run tests, and perform the limited supervised flight evaluations described above.
+
+## Final deliverables
+
+Provide:
+
+1. Root causes of the overflight and bouncing problems, with supporting evidence.
+2. Exact files and algorithms changed.
+3. Regression test results.
+4. Before-and-after flight comparisons.
+5. Whether Roadtrip was completed.
+6. Whether the candidate should replace the baseline.
+7. Remaining limitations and the next recommended improvement.
+
+**Your priority is reliable flight, not maximum speed.**
+
+Begin by investigating the overflight failures and ground-contact telemetry from existing runs. Identify the smallest changes likely to address both problems, implement them in a separate experimental version, and validate them in Uncrashed.

@@ -1,0 +1,21 @@
+{
+ "attempt": "20261027_174804_374547_gate_live",
+ "rows": 1086,
+ "elapsed_s": 24.5,
+ "gates": 0,
+ "last_pass_t": null,
+ "failure_window_s": 24.5,
+ "next_gate_visible_after_last_pass": "0/1086 rows",
+ "last_seen_gate": null,
+ "last_seen_ago_s": null,
+ "trailing_states": [
+  "lost",
+  "aborted"
+ ],
+ "recovery_attempted": false,
+ "recovery_episodes": 0,
+ "end_speed_ms": 0.25,
+ "damage_onsets": 0,
+ "first_damage_s": null,
+ "failure_class_heuristic": "gate_lost"
+}
